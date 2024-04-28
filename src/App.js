@@ -41,8 +41,8 @@ function App() {
     if (deviceInput !== "") {
       setDeviceArr([...deviceArr, { id: nextId + 1, name: deviceInput }]);
       nextId = nextId + 1;
-      setDevice(deviceInput='')
-      clearInput()
+      setDevice((deviceInput = ""));
+      clearInput();
     }
   }
   function deleteDevice(id) {
