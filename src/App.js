@@ -4,7 +4,6 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 let nextId = 0;
-let list = document.getElementById("list");
 function App() {
   let [deviceInput, setDevice] = useState("");
   let [deviceArr, setDeviceArr] = useState([]);
@@ -39,9 +38,12 @@ function App() {
   });
 
   function addDevices() {
-    setDeviceArr([...deviceArr, { id: nextId + 1, name: deviceInput }]);
-    nextId = nextId + 1;
-    clearInput();
+    if (deviceInput !== "") {
+      setDeviceArr([...deviceArr, { id: nextId + 1, name: deviceInput }]);
+      nextId = nextId + 1;
+      setDevice(deviceInput='')
+      clearInput()
+    }
   }
   function deleteDevice(id) {
     let newDevices = deviceArr.filter((device) => {
@@ -54,7 +56,6 @@ function App() {
     let newDevices = deviceArr.map((device) => {
       if (device.id === id) {
         let newDevice = { ...device, name: prompt(device.name) };
-
         return newDevice;
       } else {
         return device;
