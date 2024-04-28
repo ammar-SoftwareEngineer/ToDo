@@ -4,16 +4,13 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 let nextId = 0;
-
+let list = document.getElementById("list");
 function App() {
   let [deviceInput, setDevice] = useState("");
   let [deviceArr, setDeviceArr] = useState([]);
   let arrDevices = deviceArr.map((item) => {
     return (
-      <li
-        key={item.id}
-        className=" mb-3 d-flex justify-content-between align-items-center"
-      >
+      <li key={item.id} className=" d-flex justify-content-between ">
         <span>
           {" "}
           {item.id} - {item.name}{" "}
@@ -57,7 +54,7 @@ function App() {
     let newDevices = deviceArr.map((device) => {
       if (device.id === id) {
         let newDevice = { ...device, name: prompt(device.name) };
-        
+
         return newDevice;
       } else {
         return device;
@@ -69,18 +66,19 @@ function App() {
     let input = document.getElementById("input");
     input.value = "";
   }
-  
+
   return (
     <div className="App  ">
       <div className="py-5 bg-success text-white ">
         <h2>To Do List</h2>
       </div>
       <div className="container mt-5">
-        <div className="d-flex  gap-3">
+        <div className="d-flex  gap-3 mb-4">
           <input
             id="input"
             type="text"
             className="form-control"
+            placeholder="Enter device name"
             onChange={(e) => {
               setDevice(e.target.value);
             }}
@@ -94,7 +92,8 @@ function App() {
             Add
           </button>
         </div>
-        <ul className="mt-3  ps-2 w-100">{arrDevices}</ul>
+
+        <ul className=" d-flex flex-column gap-4 w-100">{arrDevices}</ul>
       </div>
     </div>
   );
