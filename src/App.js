@@ -50,7 +50,8 @@ function App() {
     let newDevices = deviceArr.filter((device) => {
       return device.id !== id;
     });
-    nextId = nextId - 1;
+    id--
+    // nextId = nextId - 1 ;
     setDeviceArr(newDevices);
   }
 
@@ -59,8 +60,8 @@ function App() {
       if (device.id === id) {
         let newDevice = {
           ...device,
-          
-          name: prompt(device.name)
+
+          name: prompt(device.name),
         };
         return newDevice;
       } else {
