@@ -45,6 +45,7 @@ function App() {
       clearInput();
     }
   }
+
   function deleteDevice(id) {
     let newDevices = deviceArr.filter((device) => {
       return device.id !== id;
@@ -52,10 +53,15 @@ function App() {
     nextId = nextId - 1;
     setDeviceArr(newDevices);
   }
+
   function editDevice(id) {
     let newDevices = deviceArr.map((device) => {
       if (device.id === id) {
-        let newDevice = { ...device, name: prompt(device.name) };
+        let newDevice = {
+          ...device,
+          
+          name: prompt(device.name)
+        };
         return newDevice;
       } else {
         return device;
@@ -79,7 +85,7 @@ function App() {
             id="input"
             type="text"
             className="form-control"
-            placeholder="Enter device name"
+            placeholder="Enter Notes"
             onChange={(e) => {
               setDevice(e.target.value);
             }}
@@ -94,7 +100,7 @@ function App() {
           </button>
         </div>
 
-        <ul className=" d-flex flex-column gap-4 w-100">{arrDevices}</ul>
+        <ul className=" d-flex flex-column gap-4 w-100 ps-2">{arrDevices}</ul>
       </div>
     </div>
   );
