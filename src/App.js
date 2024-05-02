@@ -60,7 +60,6 @@ function App() {
       if (device.id === id) {
         let newDevice = {
           ...device,
-
           name: prompt(device.name),
         };
         return newDevice;
